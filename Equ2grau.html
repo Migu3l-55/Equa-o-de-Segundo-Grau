@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>equação de segundo grau</title>
+
+    <style>
+        #equ {
+            text-align: center;
+            font-size: 24px;
+        }
+    
+        #x1_output, #x2_output {
+            font-size: 14px;
+            margin: 1px;
+        } 
+
+        fieldset {
+            padding-top: 14px;
+            border-radius: 18px;
+        }
+        
+    </style>
+</head>
+<body>
+    <p title="equação de segundo grau" id="equ">(a.X^2 + b.X + c)</p>
+
+    <fieldset>
+        <label for="a_input">a:</label>
+        <input type="number" placeholder="0" name="a_input" id="a_input" onchange="getValues()" value="1"> <br>
+
+        <label for="b_input">b:</label>
+        <input type="number" placeholder="0" name="b_input" id="b_input" onchange="getValues()" value="1"> <br>
+
+        <label for="c_input">c:</label>
+        <input type="number" placeholder="0" name="c_input" id="c_input" onchange="getValues()" value="1">
+
+        <br><br>
+        <p id="x1_output">X1:</p>
+        <p id="x2_output">X2:</p>
+    </fieldset>
+
+    <script> 
+        function getValues() {
+            let a = document.getElementById("a_input").value;
+            let b = document.getElementById("b_input").value;
+            let c = document.getElementById("c_input").value;
+
+            a = Number(a);
+            b = Number(b);
+            c = Number(c);
+
+            document.getElementById("equ").innerHTML = `(${a}.X^2 + ${b}.X + ${c})`;
+
+            let x1 = ((-b) + (Math.sqrt((b*b) - (4 * a * c))))/2;
+            let x2 = ((-b) - (Math.sqrt((b*b) - (4 * a * c))))/2;
+
+            if (isNaN(x1)) {
+                x1 = "Não é real";
+            };
+
+            if (isNaN(x2)) {
+                x2 = "Não é real";
+            };
+
+            document.getElementById("x1_output").innerHTML = `X1: ${x1.toFixed(2)}`;
+            document.getElementById("x2_output").innerHTML = `X2: ${x2.toFixed(2)}`;
+        };
+    </script>
+
+</body>
+</html>
